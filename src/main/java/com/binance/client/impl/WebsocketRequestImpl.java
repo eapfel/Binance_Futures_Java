@@ -81,15 +81,15 @@ class WebsocketRequestImpl {
         return request;
     }
 
-    WebsocketRequest<CandlestickEvent> subscribeCandlestickEvent(String symbol, CandlestickInterval interval,
+    WebsocketRequest<CandlestickEvent> subscribeCandlestickEvent(String symbols, CandlestickInterval interval,
             SubscriptionListener<CandlestickEvent> subscriptionListener,
             SubscriptionErrorHandler errorHandler) {
         InputChecker.checker()
-                .shouldNotNull(symbol, "symbol")
+                .shouldNotNull(symbols, "symbols")
                 .shouldNotNull(subscriptionListener, "listener");
         WebsocketRequest<CandlestickEvent> request = new WebsocketRequest<>(subscriptionListener, errorHandler);
-        request.name = "***Candlestick for " + symbol + "***"; 
-        request.connectionHandler = (connection) -> connection.send(Channels.candlestickChannel(symbol, interval));
+        request.name = "***Candlestick for " + symbols + "***";
+        request.connectionHandler = (connection) -> connection.send(Channels.candlestickChannel(symbols, interval));
 
         request.jsonParser = (jsonWrapper) -> {
             CandlestickEvent result = new CandlestickEvent();
