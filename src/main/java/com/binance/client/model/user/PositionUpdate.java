@@ -22,7 +22,6 @@ public class PositionUpdate {
 
     private String positionSide;
 
-
     public String getSymbol() {
         return symbol;
     }

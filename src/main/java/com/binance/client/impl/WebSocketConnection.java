@@ -101,6 +101,10 @@ public class WebSocketConnection extends WebSocketListener {
         }
     }
 
+    void ping() {
+        send("ping");
+    }
+
     @Override
     public void onMessage(WebSocket webSocket, String text) {
         super.onMessage(webSocket, text);

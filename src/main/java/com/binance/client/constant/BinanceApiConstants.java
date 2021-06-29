@@ -18,6 +18,16 @@ public class BinanceApiConstants {
     public static final String WS_API_BASE_URL = "wss://fstream.binance.com/ws";
 
     /**
+     * REST API TESTNET base URL.
+     */
+    public static final String API_TESTNET_BASE_URL = "https://testnet.binancefuture.com";
+
+    /**
+     * Streaming API TESTNET base URL.
+     */
+    public static final String WS_API_TESTNET_BASE_URL = "wss://fstream.binancefuture.com/ws";
+
+    /**
      * HTTP Header to be used for API-KEY authentication.
      */
     public static final String API_KEY_HEADER = "X-MBX-APIKEY";

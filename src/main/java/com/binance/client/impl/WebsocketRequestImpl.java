@@ -467,7 +467,6 @@ class WebsocketRequestImpl {
             result.setEventTime(jsonWrapper.getLong("E"));
             if (jsonWrapper.containKey("T"))
                 result.setTransactionTime(jsonWrapper.getLong("T"));
-            result.setEventReasonType(jsonWrapper.getString("m"));
 
             if(jsonWrapper.getString("e").equals("ACCOUNT_UPDATE")) {
                 AccountUpdate accountUpdate = new AccountUpdate();
@@ -526,8 +525,8 @@ class WebsocketRequestImpl {
                 orderUpdate.setTradeID(jsondata.getLong("t"));
                 orderUpdate.setBidsNotional(jsondata.getBigDecimal("b"));
                 orderUpdate.setAsksNotional(jsondata.getBigDecimal("a"));
-                orderUpdate.setIsMarkerSide(jsondata.getBoolean("m"));
-                orderUpdate.setIsReduceOnly(jsondata.getBoolean("R"));
+                orderUpdate.setIsMarkerSide(jsondata.getBooleanOrDefault("m", false));
+                orderUpdate.setIsReduceOnly(jsondata.getBooleanOrDefault("R", false));
                 orderUpdate.setWorkingType(jsondata.getString("wt"));
                 orderUpdate.setOriginalOrderType(jsondata.getString("ot"));
                 orderUpdate.setPositionSide(jsondata.getString("ps"));
