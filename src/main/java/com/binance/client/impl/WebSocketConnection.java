@@ -1,6 +1,5 @@
 package com.binance.client.impl;
 
-import com.binance.client.SubscriptionOptions;
 import okhttp3.Request;
 import okhttp3.Response;
 import okhttp3.WebSocket;
@@ -8,6 +7,7 @@ import okhttp3.WebSocketListener;
 import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;
 
+import com.binance.client.SubscriptionOptions;
 import com.binance.client.constant.BinanceApiConstants;
 import com.binance.client.exception.BinanceApiException;
 import com.binance.client.impl.utils.JsonWrapper;
@@ -48,8 +48,8 @@ public class WebSocketConnection extends WebSocketListener {
         this.autoClose = autoClose;
         this.subscriptionUrl = options.getUri();
 
-        this.okhttpRequest = request.authHandler == null ? new Request.Builder().url(watchDog.getOptions().getUri()).build()
-                : new Request.Builder().url(watchDog.getOptions().getUri()).build();
+        this.okhttpRequest = request.authHandler == null ? new Request.Builder().url(this.subscriptionUrl).build()
+                : new Request.Builder().url(this.subscriptionUrl).build();
         this.watchDog = watchDog;
         log.info("[Sub] Connection [id: " + this.connectionId + "] created for " + request.name);
     }
@@ -99,10 +99,6 @@ public class WebSocketConnection extends WebSocketListener {
             log.error("[Sub][" + this.connectionId + "] Failed to send message");
             closeOnError();
         }
-    }
-
-    void ping() {
-        send("ping");
     }
 
     @Override
@@ -161,7 +157,7 @@ public class WebSocketConnection extends WebSocketListener {
     }
 
     public void close() {
-        log.info("[Sub][" + this.connectionId + "] Closing normally");
+        log.error("[Sub][" + this.connectionId + "] Closing normally");
         webSocket.cancel();
         webSocket = null;
         watchDog.onClosedNormally(this);
