@@ -50,4 +50,8 @@ class WebSocketWatchDog {
     void onClosedNormally(WebSocketConnection connection) {
         TIME_HELPER.remove(connection);
     }
+
+    public SubscriptionOptions getOptions() {
+        return options;
+    }
 }
