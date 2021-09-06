@@ -1108,13 +1108,13 @@ class RestApiRequestImpl {
 
         request.request = createRequestByGetWithSignature("/fapi/v1/openOrders", builder);
 
-        request.jsonParser = (jsonWrapper -> {
+        request.jsonParser = (data -> {
             List<Order> result = new LinkedList<>();
-            JsonWrapperArray dataArray = jsonWrapper.getJsonArray("data");
-            dataArray.forEach((item) -> {
+            JsonWrapperArray dataArray = data.getJsonArray("data");
+            dataArray.forEach((jsonWrapper) -> {
                 Order o = new Order();
                 o.setClientOrderId(jsonWrapper.getString("clientOrderId"));
-                o.setCumQty(jsonWrapper.getBigDecimal("cumQty"));
+                o.setCumQty(jsonWrapper.getBigDecimal("executedQty")); // antes esto era cumQty. Ahora el campo no viene, quiza relacionado con cambio del 2020-01-19
                 o.setCumQuote(jsonWrapper.getBigDecimal("cumQuote"));
                 o.setExecutedQty(jsonWrapper.getBigDecimal("executedQty"));
                 o.setOrderId(jsonWrapper.getLong("orderId"));
@@ -1157,13 +1157,13 @@ class RestApiRequestImpl {
                 .putToUrl("limit", limit);
         request.request = createRequestByGetWithSignature("/fapi/v1/allOrders", builder);
 
-        request.jsonParser = (jsonWrapper -> {
+        request.jsonParser = (data -> {
             List<Order> result = new LinkedList<>();
-            JsonWrapperArray dataArray = jsonWrapper.getJsonArray("data");
-            dataArray.forEach((item) -> {
+            JsonWrapperArray dataArray = data.getJsonArray("data");
+            dataArray.forEach((jsonWrapper) -> {
                 Order o = new Order();
                 o.setClientOrderId(jsonWrapper.getString("clientOrderId"));
-                o.setCumQty(jsonWrapper.getBigDecimal("cumQty"));
+                o.setCumQty(jsonWrapper.getBigDecimal("executedQty")); // antes esto era cumQty. Ahora el campo no viene, quiza relacionado con cambio del 2020-01-19
                 o.setCumQuote(jsonWrapper.getBigDecimal("cumQuote"));
                 o.setExecutedQty(jsonWrapper.getBigDecimal("executedQty"));
                 o.setOrderId(jsonWrapper.getLong("orderId"));
