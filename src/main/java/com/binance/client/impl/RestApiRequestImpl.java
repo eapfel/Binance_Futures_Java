@@ -699,33 +699,33 @@ class RestApiRequestImpl {
                 } else {
                     Order o = new Order();
                     JSONObject jsonObj = (JSONObject) obj;
-                    o.setClientOrderId(jsonWrapper.getString("clientOrderId"));
-                    o.setCumQty(jsonWrapper.getBigDecimal("cumQty"));
-                    o.setCumQuote(jsonWrapper.getBigDecimal("cumQuote"));
-                    o.setExecutedQty(jsonWrapper.getBigDecimal("executedQty"));
-                    o.setOrderId(jsonWrapper.getLong("orderId"));
-                    o.setAvgPrice(jsonWrapper.getBigDecimal("avgPrice"));
-                    o.setOrigQty(jsonWrapper.getBigDecimal("origQty"));
-                    o.setPrice(jsonWrapper.getBigDecimal("price"));
-                    o.setReduceOnly(jsonWrapper.getBoolean("reduceOnly"));
-                    o.setSide(jsonWrapper.getString("side"));
-                    o.setPositionSide(jsonWrapper.getString("positionSide"));
-                    o.setStatus(jsonWrapper.getString("status"));
-                    o.setStopPrice(jsonWrapper.getBigDecimal("stopPrice"));
-                    o.setClosePosition(jsonWrapper.getBoolean("closePosition"));
-                    o.setSymbol(jsonWrapper.getString("symbol"));
-                    o.setTimeInForce(jsonWrapper.getString("timeInForce"));
-                    o.setType(jsonWrapper.getString("type"));
-                    o.setOrigType(jsonWrapper.getString("origType"));
+                    o.setClientOrderId(jsonObj.getString("clientOrderId"));
+                    o.setCumQty(jsonObj.getBigDecimal("cumQty"));
+                    o.setCumQuote(jsonObj.getBigDecimal("cumQuote"));
+                    o.setExecutedQty(jsonObj.getBigDecimal("executedQty"));
+                    o.setOrderId(jsonObj.getLong("orderId"));
+                    o.setAvgPrice(jsonObj.getBigDecimal("avgPrice"));
+                    o.setOrigQty(jsonObj.getBigDecimal("origQty"));
+                    o.setPrice(jsonObj.getBigDecimal("price"));
+                    o.setReduceOnly(jsonObj.getBoolean("reduceOnly"));
+                    o.setSide(jsonObj.getString("side"));
+                    o.setPositionSide(jsonObj.getString("positionSide"));
+                    o.setStatus(jsonObj.getString("status"));
+                    o.setStopPrice(jsonObj.getBigDecimal("stopPrice"));
+                    o.setClosePosition(jsonObj.getBoolean("closePosition"));
+                    o.setSymbol(jsonObj.getString("symbol"));
+                    o.setTimeInForce(jsonObj.getString("timeInForce"));
+                    o.setType(jsonObj.getString("type"));
+                    o.setOrigType(jsonObj.getString("origType"));
                     if (jsonWrapper.containKey("activatePrice")) {
-                        o.setActivatePrice(jsonWrapper.getBigDecimal("activatePrice"));
+                        o.setActivatePrice(jsonObj.getBigDecimal("activatePrice"));
                     }
                     if (jsonWrapper.containKey("priceRate")) {
-                        o.setActivatePrice(jsonWrapper.getBigDecimal("priceRate"));
+                        o.setActivatePrice(jsonObj.getBigDecimal("priceRate"));
                     }
-                    o.setUpdateTime(jsonWrapper.getLong("updateTime"));
-                    o.setWorkingType(jsonWrapper.getString("workingType"));
-                    o.setPriceProtect(jsonWrapper.getBoolean("priceProtect"));
+                    o.setUpdateTime(jsonObj.getLong("updateTime"));
+                    o.setWorkingType(jsonObj.getString("workingType"));
+                    o.setPriceProtect(jsonObj.getBoolean("priceProtect"));
                     listResult.add(o);
                 }
             });
