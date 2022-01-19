@@ -1050,6 +1050,7 @@ class RestApiRequestImpl {
             if (jsonWrapper.containKey("priceRate")) {
                 result.setActivatePrice(jsonWrapper.getBigDecimal("priceRate"));
             }
+            result.setCreationTime(jsonWrapper.getLong("time"));
             result.setUpdateTime(jsonWrapper.getLong("updateTime"));
             result.setWorkingType(jsonWrapper.getString("workingType"));
             result.setPriceProtect(jsonWrapper.getBoolean("priceProtect"));
@@ -1093,6 +1094,8 @@ class RestApiRequestImpl {
             if (jsonWrapper.containKey("priceRate")) {
                 result.setActivatePrice(jsonWrapper.getBigDecimal("priceRate"));
             }
+
+            result.setCreationTime(jsonWrapper.getLong("time"));
             result.setUpdateTime(jsonWrapper.getLong("updateTime"));
             result.setWorkingType(jsonWrapper.getString("workingType"));
             result.setPriceProtect(jsonWrapper.getBoolean("priceProtect"));
@@ -1137,6 +1140,7 @@ class RestApiRequestImpl {
                 if (jsonWrapper.containKey("priceRate")) {
                     o.setActivatePrice(jsonWrapper.getBigDecimal("priceRate"));
                 }
+                o.setCreationTime(jsonWrapper.getLong("time"));
                 o.setUpdateTime(jsonWrapper.getLong("updateTime"));
                 o.setWorkingType(jsonWrapper.getString("workingType"));
                 o.setPriceProtect(jsonWrapper.getBoolean("priceProtect"));

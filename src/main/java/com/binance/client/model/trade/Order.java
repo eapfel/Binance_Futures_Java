@@ -47,6 +47,8 @@ public class Order {
 
     private BigDecimal priceRate;
 
+    private Long creationTime;
+
     private Long updateTime;
 
     private String workingType;
@@ -209,6 +211,14 @@ public class Order {
 
     public void setType(String type) {
         this.type = type;
+    }
+
+    public Long getCreationTime() {
+        return creationTime;
+    }
+
+    public void setCreationTime(Long creationTime) {
+        this.creationTime = creationTime;
     }
 
     public Long getUpdateTime() {
