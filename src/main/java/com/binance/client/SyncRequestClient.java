@@ -308,6 +308,13 @@ public interface SyncRequestClient {
     List<MyTrade> getAccountTrades(String symbol, Long startTime, Long endTime, Long fromId, Integer limit);
 
     /**
+     * Get trades for a specific account and symbol.
+     *
+     * @return Trades.
+     */
+    List<MyTrade> getAccountTrades(String symbol, Long orderId);
+
+    /**
      * Get income history.
      *
      * @return Income history.
