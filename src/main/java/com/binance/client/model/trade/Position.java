@@ -30,6 +30,7 @@ public class Position {
     private String positionSide;
 
     private BigDecimal positionAmt;
+    private BigDecimal notional;
 
 
     public BigDecimal getPositionAmt() {
@@ -128,6 +129,14 @@ public class Position {
         this.positionSide = positionSide;
     }
 
+    public void setNotional(BigDecimal notional) {
+        this.notional = notional;
+    }
+
+    public BigDecimal getNotional() {
+        return notional;
+    }
+
     @Override
     public String toString() {
         return new ToStringBuilder(this, BinanceApiConstants.TO_STRING_BUILDER_STYLE)
@@ -138,4 +147,6 @@ public class Position {
                 .append("maxNotional", maxNotional).append("positionSide", positionSide)
                 .append("positionAmt", positionAmt).toString();
     }
+
+
 }

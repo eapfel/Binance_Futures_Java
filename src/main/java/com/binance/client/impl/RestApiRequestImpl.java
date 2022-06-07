@@ -1284,6 +1284,7 @@ class RestApiRequestImpl {
                 element.setMaxNotional(item.getString("maxNotional"));
                 element.setPositionSide(item.getString("positionSide"));
                 element.setPositionAmt(item.getBigDecimal("positionAmt"));
+                element.setNotional(item.getBigDecimal("notional"));
                 positionList.add(element);
             });
             result.setPositions(positionList);
